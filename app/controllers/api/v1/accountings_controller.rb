@@ -38,8 +38,9 @@ class Api::V1::AccountingsController < ApplicationController
 
     if request.headers["token"] == ENV['API_TOKEN']
 
-      puts params["accounting"]["name"]
-      puts params["accounting"]
+      # puts params["accounting"]["name"]
+      # puts params["accounting"]
+      puts 'Hello Heroku'
 
       accounting = Accounting.create!(
         name: params["accounting"]["name"],
