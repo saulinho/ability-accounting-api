@@ -40,7 +40,9 @@ class Api::V1::AccountingsController < ApplicationController
 
       # puts params["accounting"]["name"]
       puts 'Hello Heroku'
-      puts params["accounting"]
+      # puts params["accounting"]
+      accounting2 = params.require(:accounting).permit(:name)
+      puts accounting2
 
       accounting = Accounting.create!(
         name: params["accounting"]["name"],
@@ -101,5 +103,10 @@ class Api::V1::AccountingsController < ApplicationController
 
   end
 
+  private
+
+  # def accounting_params
+    # params.require(:accounting).permit(:name)
+  # end
 
 end
