@@ -37,7 +37,11 @@ class Api::V1::AccountingsController < ApplicationController
   def create
 
     if request.headers["token"] == ENV['API_TOKEN']
-      
+
+      puts accounting
+      puts params["accounting"]["name"]
+      puts params["accounting"]
+
       accounting = Accounting.create!(
         name: params["accounting"]["name"],
       )
