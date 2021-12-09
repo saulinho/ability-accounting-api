@@ -38,7 +38,6 @@ class Api::V1::AccountingsController < ApplicationController
 
     if request.headers["token"] == ENV['API_TOKEN']
 
-      puts accounting
       puts params["accounting"]["name"]
       puts params["accounting"]
 
