@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
       
       get '/customer_number/:id', to: 'customers#customer_number'
+      get '/customer_test/:id', to: 'customers#customer_test'
 
       root to: "static#home"
     end

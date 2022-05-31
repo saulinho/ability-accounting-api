@@ -44,6 +44,23 @@ class Api::V1::CustomersController < ApplicationController
     end
   end
 
+  #GET /api/v1/customers/:id
+  def customer_test
+    if request.headers["token"] == ENV['API_TOKEN']
+
+      if Customer.where(id: params[:id]).present?
+        customer = Customer.find(params[:id])
+        render json: {customer: customer}
+      else
+        render json: {status: 410, description: "ID not found!"}
+      end
+
+    else
+      render json: {status: 401, description: "Unauthorized"}
+    end
+
+  end
+
   #POST /api/v1/customers
   def create
 
