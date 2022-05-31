@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :invoices do
         resources :products
       end
+      
+      get '/customer_number/:id', to: 'customers#customer_number'
 
       root to: "static#home"
     end

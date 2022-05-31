@@ -2,8 +2,7 @@ class Api::V1::CustomersController < ApplicationController
 
 
   #GET /api/v1/customers
-  def index
-
+  def index    
     if request.headers["token"] == ENV['API_TOKEN']
       customers = Customer.all
       render json: {customers: customers}
@@ -12,7 +11,7 @@ class Api::V1::CustomersController < ApplicationController
     end
 
   end
-
+  
 
   #GET /api/v1/customers/:id
   def show
@@ -32,6 +31,18 @@ class Api::V1::CustomersController < ApplicationController
 
   end
 
+  def customer_number
+    if request.headers["token"] == ENV['API_TOKEN']
+        if Customer.where(number: params[:id]).present?
+          customer = Customer.where("number = #{params[:id]}")          
+          render json: {customer: customer}
+        else
+          render json: {status: 410, description: "Number not found!"}
+        end
+    else
+      render json: {status: 401, description: "Unauthorized"}
+    end
+  end
 
   #POST /api/v1/customers
   def create
