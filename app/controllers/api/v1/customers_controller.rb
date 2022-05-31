@@ -31,7 +31,7 @@ class Api::V1::CustomersController < ApplicationController
 
   end
 
-  def customer_number
+  def customers_number
     if request.headers["token"] == ENV['API_TOKEN']
         if Customer.where(number: params[:id]).present?
           customer = Customer.where("number = #{params[:id]}")          
@@ -45,7 +45,7 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   #GET /api/v1/customers/:id
-  def customer_test
+  def customers_test
     if request.headers["token"] == ENV['API_TOKEN']
 
       if Customer.where(id: params[:id]).present?

@@ -27,8 +27,8 @@ Rails.application.routes.draw do
         resources :products
       end
       
-      get '/customer_number/:id', to: 'customers#customer_number'
-      get '/customer_test/:id', to: 'customers#customer_test'
+      get '/customers_number/:id', to: 'customers#customers_number'
+      get '/customers_test/:id', to: 'customers#customers_test'
 
       root to: "static#home"
     end
